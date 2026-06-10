@@ -396,6 +396,100 @@
     background: var(--line);
   }
 
+  /* ——— Dark fit block ——— */
+  .fit-block {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 36px 36px 32px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .fit-block::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255, 77, 255, 0.10);
+    pointer-events: none;
+  }
+  .fit-block-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .fit-block h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin: 0 0 16px;
+  }
+  .fit-block-intro {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #CFD1D4;
+    margin: 0 0 24px;
+  }
+  .fit-reasons {
+    display: grid;
+    gap: 12px;
+  }
+  .fit-reason {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .fit-reason-icon {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 77, 255, 0.15);
+    border: 1px solid rgba(255, 77, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin-top: 1px;
+  }
+  .fit-reason-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #CFD1D4;
+  }
+  .fit-reason-text strong {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+  .fit-verdict {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .fit-verdict-bar {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+    align-self: stretch;
+    flex: 0 0 3px;
+  }
+  .fit-verdict-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #FFFFFF;
+    font-weight: 500;
+  }
+
   /* ——— Mobile ——— */
   @media (max-width: 600px) {
     .wrap { padding: 36px 20px 64px; }
@@ -482,6 +576,17 @@
 
     </div>
 
+    <div class="fit-block" id="res-fit-block">
+      <div class="fit-block-eyebrow">Профессия инфлюенс-менеджера</div>
+      <h3 id="res-fit-title"></h3>
+      <p class="fit-block-intro" id="res-fit-intro"></p>
+      <div class="fit-reasons" id="res-fit-reasons"></div>
+      <div class="fit-verdict">
+        <div class="fit-verdict-bar"></div>
+        <div class="fit-verdict-text" id="res-fit-verdict"></div>
+      </div>
+    </div>
+
     <div class="result-actions">
       <button class="btn btn-primary" onclick="restart()">Пройти тест заново</button>
     </div>
@@ -546,7 +651,18 @@
       growth: [
         "Иногда за цифрами стоят живые люди и творчество — не бойтесь отступить от строгой инструкции, если блогер предлагает более органичную идею.",
         "Тренируйте в себе «дипломата»: блогерам часто нужно всё объяснять с нуля, терпение здесь не слабость."
-      ]
+      ],
+      fit: {
+        title: "Почему профессия инфлюенс-менеджера точно подойдёт тебе",
+        intro: "Инфлюенс-маркетинг — одна из немногих сфер, где аналитический склад ума даёт настоящее конкурентное преимущество. Большинство менеджеров работают «на ощущениях». Ты будешь работать на данных — и это делает тебя ценнее.",
+        reasons: [
+          { icon: "📊", title: "Рынку нужны люди с цифрами", text: "Бренды устали сливать бюджеты на «красивых» блогеров. <strong>Менеджер, который умеет читать статистику</strong> и прогнозировать результат — редкость, за которую платят больше." },
+          { icon: "⚙️", title: "Системность = масштаб", text: "Когда у тебя выстроены процессы, ты ведёшь не 5 блогеров, а 50. <strong>Умение строить системы</strong> — это прямой путь к старшим ролям и управлению командой." },
+          { icon: "🎯", title: "Твой стиль решает реальные задачи", text: "Клиенту важен результат, а не процесс. <strong>Ты говоришь с ними на одном языке</strong> — язык цифр, ROI и конкретных выводов. Это выстраивает доверие быстро." },
+          { icon: "🚀", title: "Точка входа — уже сейчас", text: "Инфлюенс-менеджмент — одна из самых быстро растущих digital-профессий. <strong>Аналитики здесь дефицит</strong>, и войти с твоим профилем проще, чем кажется." }
+        ],
+        verdict: "Твой аналитический склад — не просто черта характера, это профессиональный инструмент. В инфлюенс-маркетинге он работает напрямую: на результаты, на репутацию и на карьеру. Эта профессия создана для тебя."
+      }
     },
     B: {
       stamp: "Креативный интуит",
@@ -560,7 +676,18 @@
       growth: [
         "Без чёткой системы (таблиц, Trello) легко забыть про дедлайн или маркировку — начните хотя бы с простой таблицы проектов.",
         "Подкрепляйте интуицию цифрами: проверяйте статистику до интеграции и после. Так вы превратите чутьё в доказуемый результат."
-      ]
+      ],
+      fit: {
+        title: "Почему профессия инфлюенс-менеджера точно подойдёт тебе",
+        intro: "Инфлюенс-маркетинг — это творческая профессия, которую часто пытаются загнать в таблицы. Но лучшие интеграции рождаются не в Excel — они рождаются у людей с чутьём. У таких, как ты.",
+        reasons: [
+          { icon: "✨", title: "Идеи — твой главный актив", text: "Рынок переполнен «техническими» менеджерами. <strong>Тот, кто может придумать нативную подачу</strong>, выделяется сразу. Бренды платят именно за это." },
+          { icon: "🔥", title: "Тренды — твоя суперсила", text: "Ты видишь, что «взлетит», раньше клиента. <strong>Такое чутьё на контент</strong> — это то, чему невозможно научить по учебнику, и именно оно делает менеджера незаменимым." },
+          { icon: "🤝", title: "Блогеры хотят работать с тобой", text: "Творческие люди чувствуют, когда менеджер их понимает. <strong>С тобой блогеры раскрываются</strong> и делают рекламу живой — а живая реклама даёт результат." },
+          { icon: "🌍", title: "Профессия без потолка", text: "Сначала менеджер, потом стратег, потом арт-директор кампаний. <strong>Креативный путь в инфлюенсе</strong> — один из самых интересных в digital прямо сейчас." }
+        ],
+        verdict: "Твоё чутьё на людей и тренды — это именно то, что делает инфлюенс-кампании живыми и работающими. Профессия менеджера даст тебе пространство, где твоя сила будет востребована каждый день."
+      }
     },
     C: {
       stamp: "Дипломат-организатор",
@@ -574,7 +701,18 @@
       growth: [
         "Учитесь смотреть «вверх»: не только менеджерить блогеров, но и анализировать их эффективность и креативить под их аудиторию.",
         "Значительная часть времени уходит на рутинный поиск и анализ аккаунтов — убедитесь, что готовы к этой, менее «дипломатичной», но обязательной части работы."
-      ]
+      ],
+      fit: {
+        title: "Почему профессия инфлюенс-менеджера точно подойдёт тебе",
+        intro: "Инфлюенс-маркетинг — это прежде всего про людей. Блогеры, клиенты, аудитория — всё строится на отношениях и доверии. А это именно та территория, где ты чувствуешь себя как дома.",
+        reasons: [
+          { icon: "🤝", title: "Переговоры — сердце профессии", text: "80% успеха в инфлюенсе — это договорённости. <strong>Умение выстраивать отношения</strong> и находить компромисс ценится выше любого технического навыка." },
+          { icon: "🛡️", title: "Ты удерживаешь всё вместе", text: "Клиент нервничает, блогер затягивает, дедлайн горит. <strong>Стрессоустойчивый менеджер</strong>, который не паникует — это то, за что агентства держатся руками и ногами." },
+          { icon: "⭐", title: "С тобой хотят работать снова", text: "Долгосрочные отношения с блогерами — золото в этой индустрии. <strong>Те, кто умеет дружить и доверять</strong>, получают эксклюзивные условия и лучшие места в контенте." },
+          { icon: "📈", title: "Карьера через репутацию", text: "В инфлюенсе имя важнее резюме. <strong>Дипломаты вырастают в руководителей</strong> быстрее других — потому что умеют вести команду, а не только задачи." }
+        ],
+        verdict: "Профессия инфлюенс-менеджера — это про людей на 100%. Твой природный талант к общению, умение «разруливать» и выстраивать доверие — это не просто черты характера. Это твои профессиональные инструменты, которые будут работать с первого дня."
+      }
     }
   };
 
@@ -673,6 +811,16 @@
     document.getElementById('res-growth').innerHTML = p.growth.map(s =>
       `<div class="trait-item"><div class="trait-dot"></div><div>${s}</div></div>`
     ).join('');
+
+    document.getElementById('res-fit-title').textContent = p.fit.title;
+    document.getElementById('res-fit-intro').textContent = p.fit.intro;
+    document.getElementById('res-fit-reasons').innerHTML = p.fit.reasons.map(r =>
+      `<div class="fit-reason">
+        <div class="fit-reason-icon">${r.icon}</div>
+        <div class="fit-reason-text"><strong>${r.title}.</strong> ${r.text}</div>
+      </div>`
+    ).join('');
+    document.getElementById('res-fit-verdict').textContent = p.fit.verdict;
 
     document.getElementById('questions').classList.add('hidden');
     const res = document.getElementById('result');
